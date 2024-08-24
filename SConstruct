@@ -41,6 +41,6 @@ else:
     )
 
     if(buildpath != ""):
-        os.command("cp addons/Godot-opus " + buildpath + "/ -r")
+        os.system("cp addons/Godot-opus " + buildpath + "/ -r")
 
 Default(library)
