@@ -1,4 +1,4 @@
-# Godot-rnnoise
+# Godot-opus
 
 This is a godot extension based on the [opus codec](https://opus-codec.org) allowing for real-time compression of audio recordings.
 <br>
