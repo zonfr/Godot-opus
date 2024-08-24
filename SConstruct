@@ -2,8 +2,13 @@
 import os
 import sys
 
-env = SConscript("godot-cpp/SConstruct")
+gdcpppath = "godot-cpp"
 
+for key, value in ARGLIST:
+    if(key == 'godot-cpp-path'):
+        gdcpppath=ARGUMENTS.get('godot-cpp-path')
+
+env = SConscript(gdcpppath + "/SConstruct")
 # For reference:
 # - CCFLAGS are compilation flags shared between C and C++
 # - CFLAGS are for C-specific compilation flags
