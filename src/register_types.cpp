@@ -14,8 +14,8 @@ void initialize_opus_module(ModuleInitializationLevel p_level){
 		return;
 	}
 
-	ClassDB::register_class<GodopusEncoder>();	
-	ClassDB::register_class<GodopusDecoder>();	
+	ClassDB::register_class<GdOpusEncoder>();	
+	ClassDB::register_class<GdOpusDecoder>();	
 }
 
 void uninitialize_opus_module(ModuleInitializationLevel p_level){
