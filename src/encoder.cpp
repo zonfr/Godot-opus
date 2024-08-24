@@ -31,7 +31,7 @@ PackedByteArray GdOpusEncoder::encode(PackedVector2Array samples){
 	PackedByteArray encoded;
 
 	if(samples.size() != OPUS_FRAME_SAMPLE_COUNT){
-		UtilityFunctions::printerr("GODOT OPUS ENCODER INPUT ERROR : Expected", OPUS_FRAME_SAMPLE_COUNT, "samples, got ", samples.size());
+		UtilityFunctions::printerr("GODOT OPUS ENCODER INPUT ERROR : Expected ", OPUS_FRAME_SAMPLE_COUNT, " samples, got ", samples.size());
 		return encoded; 
 	}
 
