@@ -2,13 +2,18 @@
 import os
 import sys
 
-gdcpppath = "godot-cpp"
+try:
+    Import("env")
+except Exception:
+    env = Environment()
+    env["gdcpppath"]="godot-cpp"
+    env["rootpath"]="."
+    env["buildpath"] = "addons/Godot-opus"
 
-for key, value in ARGLIST:
-    if(key == 'godot-cpp-path'):
-        gdcpppath=ARGUMENTS.get('godot-cpp-path')
+rootpath = env["rootpath"]
+buildpath = env["buildpath"]
 
-env = SConscript(gdcpppath + "/SConstruct")
+env = SConscript(env["gdcpppath"] + "/SConstruct")
 # For reference:
 # - CCFLAGS are compilation flags shared between C and C++
 # - CFLAGS are for C-specific compilation flags
@@ -19,7 +24,8 @@ env = SConscript(gdcpppath + "/SConstruct")
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=["src/"])
-env.Append(CCFLAGS=["-Iinc","-Ilib/inc"])
+env.Append(CCFLAGS=["-I"+rootpath+"/inc","-I"+rootpath+"lib/inc"])
+
 sources = Glob("src/*.cpp")
 
 
@@ -30,7 +36,7 @@ else:
     env.Append(LIBPATH=['/usr/lib'])
     env.Append(LIBS=['libopus'])
     library = env.SharedLibrary(
-        "addons/Godot-opus/libgodotopus{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        buildpath+"/libgodotopus{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 
