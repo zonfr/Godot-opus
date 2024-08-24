@@ -34,6 +34,7 @@ This extension add the "GdOpusEncoder" and "GdOpusDecoder" objects to godot, imp
 | Method definition | Method description |
 | ----------------- | ------------------ |
 | encode(samples : PackedVector2Array) -> PackedByteArray | encodes a frame. By default, the frame should be 48kHz sampling rate and 480 samples. See [configuration]()|
+| get_resampler_input_size() -> int | Utility function returning the input frame size for a resampler to output a correctly size packet for this encoder. Based on the AudioServer's mixrate| 
 
 2. Decoder  
 
