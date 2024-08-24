@@ -20,6 +20,8 @@ namespace godot {
 			GdOpusEncoder();
 			~GdOpusEncoder();
 			PackedByteArray encode(PackedVector2Array samples);
+			//utility function for resampler
+			int getResamplerInputSize();
 	};
 
 }
