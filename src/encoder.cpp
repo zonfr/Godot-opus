@@ -22,7 +22,7 @@ GdOpusEncoder::~GdOpusEncoder(){
 	opus_encoder_destroy(opusEncoder);
 }
 
-int GdOpusEncoder::getResamplerInputSize(){
+int GdOpusEncoder::get_resampler_input_size(){
 	return (AudioServer::get_singleton()->get_mix_rate()*480)/OPUS_SAMPLE_RATE;
 }
 
@@ -52,6 +52,6 @@ PackedByteArray GdOpusEncoder::encode(PackedVector2Array samples){
 void GdOpusEncoder::_bind_methods(){
 	
 	ClassDB::bind_method(D_METHOD("encode"), &GdOpusEncoder::encode);
-	ClassDB::bind_method(D_METHOD("getResamplerInputSize"), &GdOpusEncoder::getResamplerInputSize);
+	ClassDB::bind_method(D_METHOD("get_resampler_input_size"), &GdOpusEncoder::get_resampler_input_size);
 
 }
