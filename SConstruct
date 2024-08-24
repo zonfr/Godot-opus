@@ -8,7 +8,7 @@ except Exception:
     env = Environment()
     env["gdcpppath"]="godot-cpp"
     env["rootpath"]="."
-    env["buildpath"] = "addons/Godot-opus"
+    env["buildpath"] = ""
 
 rootpath = env["rootpath"]
 buildpath = env["buildpath"]
@@ -36,8 +36,11 @@ else:
     env.Append(LIBPATH=['/usr/lib'])
     env.Append(LIBS=['libopus'])
     library = env.SharedLibrary(
-        buildpath+"/libgodotopus{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        "addons/Godot-opus/libgodotopus{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
+
+    if(buildpath != ""):
+        os.command("cp addons/Godot-opus " + buildpath + "/ -r")
 
 Default(library)
