@@ -1,0 +1,4 @@
+addons/Godot-opus/*.so
+*.os
+tags
+*.dblite
