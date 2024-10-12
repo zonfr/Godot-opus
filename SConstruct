@@ -32,9 +32,9 @@ if env["platform"] == "macos":
 if env["platform"] == "windows":
     print("INFO : Compiling for windows, unsure if this works")
     env.Tool('mingw')
-    env.Append(CPPPATH=['#lib/inc'])
+    env.Append(CPPPATH=['./lib/inc'])
     env.Append(CXXFLAGS=['-fPIC'])
-    env.Append(LIBPATH=['#lib/bin/windows'])
+    env.Append(LIBPATH=['./lib/bin/windows'])
     env.Append(LIBS=['opus'])
     library = env.SharedLibrary(
         "addons/Godot-audio-resampler/libgodotaudioresampler_windows_{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
