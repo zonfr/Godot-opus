@@ -1,6 +1,7 @@
 addons/Godot-opus/*.so
 addons/Godot-opus/*.dll
 addons/Godot-opus/*.a
+*.o
 *.os
 tags
 *.dblite
