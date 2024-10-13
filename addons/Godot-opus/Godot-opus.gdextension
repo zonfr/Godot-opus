@@ -7,4 +7,4 @@ reloadable = true
 [libraries]
 
 linux.debug.x86_64 = "res://addons/Godot-opus/libgodotopus.linux.template_debug.x86_64.so"
-windows.debug.x86_64 = "res://addons/Godot-opus/libgodotopus._windows_.windows.template_debug.x86_64.so"
+windows.debug.x86_64 = "res://addons/Godot-opus/libgodotopus.windows.template_debug.x86_64.so"
