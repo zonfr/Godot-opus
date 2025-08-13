@@ -20,8 +20,6 @@ void GdOpus::init_opus(){
 }
 
 GdOpus::GdOpus(){
-	UtilityFunctions::print("GdOpus Initialized");
-	
 	init_opus();
 }
 

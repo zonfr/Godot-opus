@@ -1,9 +1,11 @@
+# Fork Modifications (Forked from https://github.com/Mysgym/Godot-opus)
+
+-Added config() function to update the sample mix-rate and sample duration (in ms) at runtime.
+-Merged the two classes GdOpusDecoder and GdOpusEncoder in GdOpus.
+
 # Godot-opus
 
 This is a godot extension based on the [opus codec](https://opus-codec.org) allowing for real-time compression of audio recordings.  
-
-It is part of a collection of tools aiming to provide modular audio processing for quality VOIP within godot.
-Check out the other tools and the demo here : https://github.com/Mysgym/mysVOIPtools-godot4-demo
 
 ## Building
 
@@ -11,7 +13,7 @@ This project is built using Scons, and requires an [opus](https://opus-codec.org
 
   1 - Clone this repo and the godot-cpp submodule  
   ```
-  git clone --recurse-submodules https://github.com/Mysgym/Godot-opus && cd Godot-opus
+  git clone --recurse-submodules https://github.com/zonfr/Godot-opus.git && cd Godot-opus
   ```
 
   2 - Build using scons  
@@ -27,70 +29,59 @@ Windows and macOS support is currently a work in progress, I encourage anyone at
 
 ## Usage  
 
-### Demo
-
-A demo incorporating this extension in a VOIP setting is available here : https://github.com/Mysgym/mysVOIPtools-godot4-demo
-
 Here is the relevant code : 
 
-#### encoding : 
+#### Encoding : 
 
 ```gdscript
   # --- Create objects
-  @onready var encoder := GdOpusEncoder.new()
+  @onready var gdopus := GdOpus.new()
+  
+  # Setting the mix-rate and the duration of the sample in milliseconds
+  gdopus.config(48000, 10);
 
-  #size to input in the resampler to get a correctly size packet for opus
-  @onready var resamplerInputSize := encoder.get_resampler_input_size()
+  # Size to input in the resampler to get a correctly size packet for opus
+  @onready var resamplerInputSize := gdopus.get_resampler_input_size()
 
   [..]
   # encode and send frame
-  var packet := encoder.encode(frame)
+  var packet := gdopus.encode(frame)
   send(packet)
   [..]
 
 ```
 
-#### decoding : 
+#### Decoding : 
 
 ```gdscript
   # --- Create objects
-  @onready var decoder := GdOpusDecoder.new()
+  @onready var gdopus := GdOpus.new()
 
   [..]
   # receive and decode frame
-  var frame := decoder.decode(packet)
+  var frame := gdopus.decode(packet)
   [..]
 
 ```
 
 
 ### Methods detail
-This extension add the "GdOpusEncoder" and "GdOpusDecoder" objects to godot, implementing the following methods :
-
-1. Encoder
+This extension add the "GdOpus" object to godot, implementing the following methods :
 
 | Method definition | Method description |
 | ----------------- | ------------------ |
-| encode(samples : PackedVector2Array) -> PackedByteArray | encodes a frame. By default, the frame should be 48kHz sampling rate and 480 samples. See [configuration](https://github.com/Mysgym/Godot-opus/blob/main/README.md#configuration)|
+| encode(samples : PackedVector2Array) -> PackedByteArray | encodes a frame. By default, the frame should be 48kHz sampling rate and 480 samples. See [configuration](https://github.com/zonfr/Godot-opus/blob/main/README.md#configuration)|
 | get_resampler_input_size() -> int | Utility function returning the input frame size for a resampler to output a correctly size packet for this encoder. Based on the AudioServer's mixrate| 
-
-2. Decoder  
-
-| Method definition | Method description |
-| ------------------|--------------------|
-| decode(packet : PackedByteArray) -> PackedVector2Array | decodes a packet encoded by a GdOpusEncoder|
+| decode(packet : PackedByteArray) -> PackedVector2Array | decodes a packet encoded by a GdOpus|
 <br>  
 
 ## Configuration
 
-By default, this extension encodes frames of 10ms on a 48kHz sampling rate. 
+By default, this extension encodes frames of 100ms on a 24kHz sampling rate. 
 This can be configured in the inc/opusConfig.h file.
 
 ## Contributing
-
-This project is being actively maintained, any reported issue and contributions are greatly appreciated.
-
-Windows and macOS users are encouraged to attempt compilation and share their work as I personally lack easy access to those OS.  
+This forked is not maintained, the original project is.
 
 ## License
 
