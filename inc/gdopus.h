@@ -24,7 +24,7 @@ namespace godot {
 			PackedByteArray encode(PackedVector2Array samples);
 			PackedVector2Array decode(PackedByteArray packet);
 			//utility function for resampler
-			int get_resampler_input_size();
+			// int get_resampler_input_size();
 			void config(int sample_rate, int frame_duration_ms);
 	};
 	

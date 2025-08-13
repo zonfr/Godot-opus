@@ -31,37 +31,34 @@ Windows and macOS support is currently a work in progress, I encourage anyone at
 
 Here is the relevant code : 
 
-#### Encoding : 
-
+#### Creating object : 
 ```gdscript
-  # --- Create objects
+  # --- Create object
   @onready var gdopus := GdOpus.new()
   
   # Setting the mix-rate and the duration of the sample in milliseconds
   gdopus.config(48000, 10);
 
-  # Size to input in the resampler to get a correctly size packet for opus
-  @onready var resamplerInputSize := gdopus.get_resampler_input_size()
+```
 
-  [..]
+#### Encoding : 
+
+```gdscript
+  <!-- # Size to input in the resampler to get a correctly size packet for opus
+  @onready var resamplerInputSize := gdopus.get_resampler_input_size() -->
   # encode and send frame
   var packet := gdopus.encode(frame)
+
+  # Use your custom way to send the data
   send(packet)
-  [..]
 
 ```
 
 #### Decoding : 
 
 ```gdscript
-  # --- Create objects
-  @onready var gdopus := GdOpus.new()
-
-  [..]
   # receive and decode frame
   var frame := gdopus.decode(packet)
-  [..]
-
 ```
 
 
@@ -70,15 +67,15 @@ This extension add the "GdOpus" object to godot, implementing the following meth
 
 | Method definition | Method description |
 | ----------------- | ------------------ |
-| config(mix_rate : int, frame_duration_ms : int) -> void | change default settings sample size after setting this must be : (frame_duration_ms/1000.0) x mix_rate|
-| encode(samples : PackedVector2Array) -> PackedByteArray | encodes a frame. By default, the frame should be 24kHz sampling rate and 2400 samples. See [configuration](https://github.com/zonfr/Godot-opus/blob/main/README.md#configuration)|
+| config(mix_rate : int, frame_duration_ms : int) -> void | change default settings, sample size after setting this must be : (frame_duration_ms/1000.0) x mix_rate|
+| encode(samples : PackedVector2Array) -> PackedByteArray | encodes a frame. By default, the frame should be 48kHz sampling rate and 480 samples. See [configuration](https://github.com/zonfr/Godot-opus/blob/main/README.md#configuration)|
 | decode(packet : PackedByteArray) -> PackedVector2Array | decodes a packet encoded by a GdOpus|
-| get_resampler_input_size() -> int | Utility function returning the input frame size for a resampler to output a correctly size packet for this encoder. Based on the AudioServer's mixrate| 
+<!-- | get_resampler_input_size() -> int | Utility function returning the input frame size for a resampler to output a correctly size packet for this encoder. Based on the AudioServer's mixrate|  -->
 <br>  
 
 ## Configuration
 
-By default, this extension encodes frames of 100ms on a 24kHz sampling rate. 
+By default, this extension encodes frames of 10ms on a 48kHz sampling rate. 
 This can be configured in the inc/opusConfig.h file.
 
 ## Contributing
