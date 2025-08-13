@@ -44,8 +44,6 @@ Here is the relevant code :
 #### Encoding : 
 
 ```gdscript
-  <!-- # Size to input in the resampler to get a correctly size packet for opus
-  @onready var resamplerInputSize := gdopus.get_resampler_input_size() -->
   # encode and send frame
   var packet := gdopus.encode(frame)
 
