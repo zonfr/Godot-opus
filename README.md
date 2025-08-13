@@ -1,6 +1,6 @@
 # Fork Modifications (Forked from https://github.com/Mysgym/Godot-opus)
 
--Added config() function to update the sample mix-rate and sample duration (in ms) at runtime.
+-Added config() function to update the sample mix-rate and sample duration (in ms) at runtime.<br>
 -Merged the two classes GdOpusDecoder and GdOpusEncoder in GdOpus.
 
 # Godot-opus
