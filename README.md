@@ -70,9 +70,10 @@ This extension add the "GdOpus" object to godot, implementing the following meth
 
 | Method definition | Method description |
 | ----------------- | ------------------ |
-| encode(samples : PackedVector2Array) -> PackedByteArray | encodes a frame. By default, the frame should be 48kHz sampling rate and 480 samples. See [configuration](https://github.com/zonfr/Godot-opus/blob/main/README.md#configuration)|
-| get_resampler_input_size() -> int | Utility function returning the input frame size for a resampler to output a correctly size packet for this encoder. Based on the AudioServer's mixrate| 
+| config(mix_rate : int, frame_duration_ms : int) -> void | change default settings sample size after setting this must be : (frame_duration_ms/1000.0) x mix_rate|
+| encode(samples : PackedVector2Array) -> PackedByteArray | encodes a frame. By default, the frame should be 24kHz sampling rate and 2400 samples. See [configuration](https://github.com/zonfr/Godot-opus/blob/main/README.md#configuration)|
 | decode(packet : PackedByteArray) -> PackedVector2Array | decodes a packet encoded by a GdOpus|
+| get_resampler_input_size() -> int | Utility function returning the input frame size for a resampler to output a correctly size packet for this encoder. Based on the AudioServer's mixrate| 
 <br>  
 
 ## Configuration
