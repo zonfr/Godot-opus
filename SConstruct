@@ -31,9 +31,9 @@ if env["platform"] == "macos":
     print("ERROR : This project doesn't support macos.")
 if env["platform"] == "windows":
     print("INFO : Compiling for windows, unsure if this works")
-    env.Tool('mingw')
+    # env.Tool('mingw')
     env.Append(CPPPATH=['./lib/inc'])
-    env.Append(CXXFLAGS=['-fPIC'])
+    # env.Append(CXXFLAGS=['-fPIC'])
     env.Append(LIBPATH=['./lib/bin/windows'])
     env.Append(LIBS=['opus'])
     library = env.SharedLibrary(

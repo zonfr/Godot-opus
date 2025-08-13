@@ -8,5 +8,4 @@ using namespace godot;
 void initialize_godopus_module(ModuleInitializationLevel p_level);
 void uninitialize_godopus_module(ModuleInitializationLevel p_level);
 
-
 #endif

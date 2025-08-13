@@ -1,7 +1,6 @@
 #include "register_types.h"
 
-#include "encoder.h"
-#include "decoder.h"
+#include "gdopus.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -14,8 +13,7 @@ void initialize_opus_module(ModuleInitializationLevel p_level){
 		return;
 	}
 
-	ClassDB::register_class<GdOpusEncoder>();	
-	ClassDB::register_class<GdOpusDecoder>();	
+	ClassDB::register_class<GdOpus>();
 }
 
 void uninitialize_opus_module(ModuleInitializationLevel p_level){
