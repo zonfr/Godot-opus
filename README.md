@@ -74,7 +74,7 @@ This extension add the "GdOpus" object to godot, implementing the following meth
 ## Configuration
 
 By default, this extension encodes frames of 10ms on a 48kHz sampling rate. 
-This can be configured in the inc/opusConfig.h file.
+This can be configured by using the config() method or in the inc/opusConfig.h file (default value, need gdextension recompile).
 
 ## Contributing
 This forked is not maintained, the original project is.
