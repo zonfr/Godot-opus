@@ -32,7 +32,14 @@ if env["platform"] == "macos":
 if env["platform"] == "windows":
     print("INFO : Compiling for windows, unsure if this works")
     # env.Tool('mingw')
-    env.Append(CPPPATH=['./lib/inc'])
+    env.Append(CPPPATH=[
+        './lib/inc',
+        '.', 
+        'godot-cpp/godot_headers/', 
+        'godot-cpp/include/', 
+        'godot-cpp/include/core/', 
+        'godot-cpp/include/gen/', 
+        'godot-cpp/classes/'])
     # env.Append(CXXFLAGS=['-fPIC'])
     env.Append(LIBPATH=['./lib/bin/windows'])
     env.Append(LIBS=['opus'])
@@ -41,9 +48,15 @@ if env["platform"] == "windows":
         source=sources,
         )
 else:
-    env.Append(CPPPATH=['/usr/include/opus'])
-    env.Append(LIBPATH=['/usr/lib'])
-    env.Append(LIBS=['libopus'])
+    env.Append(CPPPATH=['./lib/inc',
+        '.', 
+        'godot-cpp/godot_headers/', 
+        'godot-cpp/include/', 
+        'godot-cpp/include/core/', 
+        'godot-cpp/include/gen/', 
+        'godot-cpp/classes/'])
+    env.Append(LIBPATH=['./lib/bin/linux'])
+    env.Append(LIBS=['opus'])
     library = env.SharedLibrary(
         "addons/Godot-opus/libgodotopus{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
